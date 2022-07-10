@@ -11,6 +11,7 @@ import {
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../App';
 import DismissKeyboardView from '../components/DismissKeyboardView';
+import axios from 'axios';
 
 type SignUpScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
 
@@ -31,7 +32,7 @@ function SignUp({navigation}: SignUpScreenProps) {
   const onChangePassword = useCallback(text => {
     setPassword(text.trim());
   }, []);
-  const onSubmit = useCallback(() => {
+  const onSubmit = useCallback(async () => {
     if (!email || !email.trim()) {
       return Alert.alert('알림', '이메일을 입력해주세요.');
     }
@@ -41,7 +42,8 @@ function SignUp({navigation}: SignUpScreenProps) {
     if (!password || !password.trim()) {
       return Alert.alert('알림', '비밀번호를 입력해주세요.');
     }
-    if ( //이메일을 검사하는 정규 표현식
+    if (
+      //이메일을 검사하는 정규 표현식
       !/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/.test(
         email,
       )
@@ -54,8 +56,27 @@ function SignUp({navigation}: SignUpScreenProps) {
         '비밀번호는 영문,숫자,특수문자($@^!%*#?&)를 모두 포함하여 8자 이상 입력해야합니다.',
       );
     }
-    console.log(email, name, password);
-    Alert.alert('알림', '회원가입 되었습니다.');
+
+    try {
+      const response = await axios.post(
+        'http://192.249.18.175:80/userAuth/signup',
+        {
+          email,
+          name,
+          password,
+        },
+      );
+
+      if (response.data.succ) {
+        //... signup succ
+        return Alert.alert('회원 가입이 성공하였습니다.');
+      } else {
+        //... signup fail
+        return Alert.alert('회원가입이 실패하였습니다.');
+      }
+    } catch (e) {
+      return Alert.alert(`Error: ${e}`);
+    }
   }, [email, name, password]);
 
   const canGoNext = email && name && password;

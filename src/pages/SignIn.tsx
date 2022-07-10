@@ -10,6 +10,7 @@ import {
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../App';
 import DismissKeyboardView from '../components/DismissKeyboardView';
+import axios from 'axios';
 
 type SignInScreenProps = NativeStackScreenProps<RootStackParamList, 'SignIn'>;
 
@@ -25,14 +26,34 @@ function SignIn({navigation}: SignInScreenProps) {
   const onChangePassword = useCallback(text => {
     setPassword(text.trim());
   }, []);
-  const onSubmit = useCallback(() => {
+  const onSubmit = useCallback(async () => {
     if (!email || !email.trim()) {
       return Alert.alert('알림', '이메일을 입력해주세요.');
     }
     if (!password || !password.trim()) {
       return Alert.alert('알림', '비밀번호를 입력해주세요.');
     }
-    Alert.alert('알림', '로그인 되었습니다.');
+
+    try {
+      const response = await axios.post(
+        'http://192.249.18.175:80/userAuth/signin',
+        {
+          email,
+          password,
+        },
+      );
+
+      console.log(JSON.stringify(response.data._response));
+      if (response.data.succ) {
+        //... login succ
+        return Alert.alert('로그인이 성공하였습니다.');
+      } else {
+        return Alert.alert(`로그인 정보가 맞지 않습니다.`);
+      }
+    } catch (e) {
+      return Alert.alert(`Error: ${JSON.stringify(e.response._response)}`);
+      // return Alert.alert(`Error: ${e}`);
+    }
   }, [email, password]);
 
   const toSignUp = useCallback(() => {
@@ -40,7 +61,8 @@ function SignIn({navigation}: SignInScreenProps) {
   }, [navigation]);
 
   const canGoNext = email && password; //이메일과 비밀번호가 입력된 경우 로그인 버튼 클릭 가능
-  return ( //키보드가 지정영역 피하도록, 다른 영역을 클릭하면 키보드가 내려가도록
+  return (
+    //키보드가 지정영역 피하도록, 다른 영역을 클릭하면 키보드가 내려가도록
     <DismissKeyboardView>
       <View style={styles.inputWrapper}>
         <Text style={styles.label}>이메일</Text>
