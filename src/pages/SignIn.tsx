@@ -46,13 +46,13 @@ function SignIn({navigation}: SignInScreenProps) {
       console.log(JSON.stringify(response.data._response));
       if (response.data.succ) {
         //... login succ
+
         return Alert.alert('로그인이 성공하였습니다.');
       } else {
         return Alert.alert(`로그인 정보가 맞지 않습니다.`);
       }
     } catch (e) {
       return Alert.alert(`Error: ${JSON.stringify(e.response._response)}`);
-      // return Alert.alert(`Error: ${e}`);
     }
   }, [email, password]);
 
@@ -112,7 +112,7 @@ function SignIn({navigation}: SignInScreenProps) {
           <Text style={styles.loginButtonText}>로그인</Text>
         </Pressable>
         <Pressable onPress={toSignUp}>
-          <Text>회원가입하기</Text>
+          <Text style={styles.label}>계정이 없으신가요?</Text>
         </Pressable>
       </View>
     </DismissKeyboardView>
@@ -123,6 +123,7 @@ const styles = StyleSheet.create({
   textInput: {
     padding: 5,
     borderBottomWidth: StyleSheet.hairlineWidth,
+    color: 'black',
   },
   inputWrapper: {
     padding: 20,
@@ -131,6 +132,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
     marginBottom: 20,
+    color: 'black',
   },
   buttonZone: {
     alignItems: 'center',

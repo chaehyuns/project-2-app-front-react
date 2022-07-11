@@ -12,6 +12,7 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../App';
 import DismissKeyboardView from '../components/DismissKeyboardView';
 import axios from 'axios';
+import {BottomTabBarHeightCallbackContext} from '@react-navigation/bottom-tabs';
 
 type SignUpScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUp'>;
 
@@ -72,7 +73,7 @@ function SignUp({navigation}: SignUpScreenProps) {
         return Alert.alert('회원 가입이 성공하였습니다.');
       } else {
         //... signup fail
-        return Alert.alert('회원가입이 실패하였습니다.');
+        return Alert.alert('이미 존재하는 회원 정보입니다');
       }
     } catch (e) {
       return Alert.alert(`Error: ${e}`);
@@ -151,6 +152,7 @@ const styles = StyleSheet.create({
   textInput: {
     padding: 5,
     borderBottomWidth: StyleSheet.hairlineWidth,
+    color: 'black',
   },
   inputWrapper: {
     padding: 20,
@@ -159,6 +161,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
     marginBottom: 20,
+    color: 'black',
   },
   buttonZone: {
     alignItems: 'center',
