@@ -46,7 +46,7 @@ function SignIn({navigation}: SignInScreenProps) {
       console.log(JSON.stringify(response.data._response));
       if (response.data.succ) {
         //... login succ
-        this.props.setLoggedIn(true);
+        navigation.navigate('Orders');
         return Alert.alert('로그인이 성공하였습니다.');
       } else {
         return Alert.alert(`로그인 정보가 맞지 않습니다.`);

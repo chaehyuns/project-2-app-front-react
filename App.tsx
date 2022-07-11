@@ -25,39 +25,35 @@ const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 function App() {
-  const [isLoggedIn, setLoggedIn] = useState(false);
   return (
     <NavigationContainer>
-      {isLoggedIn ? (
-        <Tab.Navigator>
-          <Tab.Screen
-            name="Orders"
-            component={Orders}
-            options={{title: '오더 목록'}}
-          />
-          <Tab.Screen
-            name="Delivery"
-            component={Delivery}
-            options={{headerShown: false}}
-          />
-          <Tab.Screen
-            name="Settings"
-            component={Settings}
-            options={{title: '내 정보'}}
-          />
-        </Tab.Navigator>
-      ) : (
-        <Stack.Navigator>
-          <Stack.Screen name="SignIn" options={{title: '로그인'}}>
-            {props => <SignIn {...props} setLoggedIn={setLoggedIn} />}
-          </Stack.Screen>
-          <Stack.Screen
-            name="SignUp"
-            component={SignUp}
-            options={{title: '회원가입'}}
-          />
-        </Stack.Navigator>
-      )}
+      <Stack.Navigator>
+        <Stack.Screen
+          name="SignIn"
+          component={SignIn}
+          options={{title: '로그인'}}
+        />
+        <Stack.Screen
+          name="SignUp"
+          component={SignUp}
+          options={{title: '회원가입'}}
+        />
+        <Stack.Screen
+          name="Orders"
+          component={Orders}
+          options={{title: '오더 목록'}}
+        />
+        <Stack.Screen
+          name="Delivery"
+          component={Delivery}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Settings"
+          component={Settings}
+          options={{title: '내 정보'}}
+        />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
