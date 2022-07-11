@@ -48,11 +48,9 @@ function App() {
         </Tab.Navigator>
       ) : (
         <Stack.Navigator>
-          <Stack.Screen
-            name="SignIn"
-            component={SignIn}
-            options={{title: '로그인'}}
-          />
+          <Stack.Screen name="SignIn" options={{title: '로그인'}}>
+            {props => <SignIn {...props} setLoggedIn={setLoggedIn} />}
+          </Stack.Screen>
           <Stack.Screen
             name="SignUp"
             component={SignUp}
