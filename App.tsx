@@ -24,6 +24,28 @@ export type RootStackParamList = {
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
+function TabLayout() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen
+        name="Orders"
+        component={Orders}
+        options={{title: '오더 목록'}}
+      />
+      <Tab.Screen
+        name="Delivery"
+        component={Delivery}
+        options={{headerShown: false}}
+      />
+      <Tab.Screen
+        name="Settings"
+        component={Settings}
+        options={{title: '내 정보'}}
+      />
+    </Tab.Navigator>
+  );
+}
+
 function App() {
   return (
     <NavigationContainer>
@@ -39,19 +61,9 @@ function App() {
           options={{title: '회원가입'}}
         />
         <Stack.Screen
-          name="Orders"
-          component={Orders}
-          options={{title: '오더 목록'}}
-        />
-        <Stack.Screen
-          name="Delivery"
-          component={Delivery}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen
-          name="Settings"
-          component={Settings}
-          options={{title: '내 정보'}}
+          name="TabLayout"
+          component={TabLayout}
+          options={{title: '메인화면', headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
