@@ -8,6 +8,7 @@ import Delivery from './src/pages/Delivery';
 import {useState} from 'react';
 import SignIn from './src/pages/SignIn';
 import SignUp from './src/pages/SignUp';
+import Edit from './src/pages/Settings/Edit';
 
 export type LoggedInParamList = {
   Orders: undefined;
@@ -24,7 +25,7 @@ export type RootStackParamList = {
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-function TabLayout() {
+function TabLayout({navigation}, route) {
   return (
     <Tab.Navigator>
       <Tab.Screen
@@ -35,14 +36,26 @@ function TabLayout() {
       <Tab.Screen
         name="Delivery"
         component={Delivery}
-        options={{headerShown: false}}
+        options={{title: '배달 정보'}}
       />
       <Tab.Screen
-        name="Settings"
-        component={Settings}
+        name="SettingLayout"
+        component={SettingLayout}
         options={{title: '내 정보'}}
       />
     </Tab.Navigator>
+  );
+}
+function SettingLayout() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Settings"
+        component={Settings}
+        options={{title: '내 정보', headerShown: false}}
+      />
+      <Stack.Screen name="Edit" component={Edit} options={{title: '수정'}} />
+    </Stack.Navigator>
   );
 }
 
