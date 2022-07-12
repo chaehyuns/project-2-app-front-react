@@ -20,12 +20,30 @@ export type LoggedInParamList = {
 export type RootStackParamList = {
   SignIn: undefined;
   SignUp: undefined;
+  TabLayout: {email: string; password: string};
 };
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-function TabLayout({navigation}, route) {
+function SettingLayout(props) {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Settings"
+        component={Settings}
+        options={{title: '내 정보', headerShown: false}}
+      />
+      <Stack.Screen
+        name="Edit"
+        children={() => <Edit email={props.email} />}
+        options={{title: '수정'}}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function TabLayout({route}) {
   return (
     <Tab.Navigator>
       <Tab.Screen
@@ -40,22 +58,10 @@ function TabLayout({navigation}, route) {
       />
       <Tab.Screen
         name="SettingLayout"
-        component={SettingLayout}
+        children={() => <SettingLayout email={route.params.email} />}
         options={{title: '내 정보'}}
       />
     </Tab.Navigator>
-  );
-}
-function SettingLayout() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Settings"
-        component={Settings}
-        options={{title: '내 정보', headerShown: false}}
-      />
-      <Stack.Screen name="Edit" component={Edit} options={{title: '수정'}} />
-    </Stack.Navigator>
   );
 }
 
