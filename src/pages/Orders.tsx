@@ -14,6 +14,13 @@ const images: string[] = [
   'https://postfiles.pstatic.net/MjAyMjA3MTFfMjc5/MDAxNjU3NTI1ODM0MTc2.UcTWTO3T7JAyOcfER0FIqhITkZPsfmHMKL4AF0lld9cg.TwykU-KRNaG8DLRCS45TUjBNvTqNZ2mTY40kKW7FU6Yg.PNG.wjdcogus202/004.png?type=w966',
   'https://postfiles.pstatic.net/MjAyMjA3MTFfMjIx/MDAxNjU3NTI1ODM0MDMx.qIo7wyzi5WermWZZ5QoFZNZPnNnhQ18sZkfomsaI81og.FBDkHja3tXAX2ZVnyKp8SOxNT4dryW6q-SGxmacMxfgg.PNG.wjdcogus202/005.png?type=w966',
   'https://postfiles.pstatic.net/MjAyMjA3MTFfMTUw/MDAxNjU3NTI1ODM0MjAx.ET8B9DgRcKbtUTKKnM74Ibf7PnAUzdXiUKpOxQ-n_kIg.y4_2UpphkIUfysDX1pceXYQ7eJ_fkEy4mxbEhd2D-TYg.PNG.wjdcogus202/006.png?type=w966',
+  'https://postfiles.pstatic.net/MjAyMjA3MTJfMiAg/MDAxNjU3NTY4MjY0OTc0.i3X6eXk_On0OMH2n0zfnORqfDZLfrxqW34y8NmGgSHUg.MOvRru7NfPGQhhKzBqJ6CGlLxE6CMgOjKOQEiRreEh8g.PNG.wjdcogus202/007.png?type=w966',
+  'https://postfiles.pstatic.net/MjAyMjA3MTJfMTU2/MDAxNjU3NTY4MjY1MDIy.T-gp4LkdXtHVEY_1RUo1m_dsf2qbPecU3HIeQwCXAwgg.ek7RqcsehzadMcAYvwGPFOcpEcjGzt0qUzVY-ugtWaEg.PNG.wjdcogus202/008.png?type=w966',
+  'https://postfiles.pstatic.net/MjAyMjA3MTJfMTA4/MDAxNjU3NTY4MjY1MDEw.RPLtAr9k7LcGeshJwCZ3sUvX_rHe7NqKbhxee18LWfIg.buSbOhP1G60spafSa_AA-YiAx366IjI7m3vVgi_40C0g.PNG.wjdcogus202/009.png?type=w966',
+  'https://postfiles.pstatic.net/MjAyMjA3MTJfMTky/MDAxNjU3NTY4MjY1MDcx.wI4Z8YQxs2plI3V9YmTRssa2-fScejB9KVSGFw5xINIg.i-fYWReEn1GmsjSFKmO3qxAiFs6VXTQL-hqZWwX0Wzwg.PNG.wjdcogus202/010.png?type=w966',
+  'https://postfiles.pstatic.net/MjAyMjA3MTJfMjY5/MDAxNjU3NTY4MjY1MDU3.SeL9qnotAHzp5vr3XnmCzSNUBfsU0mq4GqrjcgPmwykg.HZc7BLpwlPMIUUp2f5KOLtRbO9PxbWrrs-ZSWpgj4pIg.PNG.wjdcogus202/011.png?type=w966',
+  'https://postfiles.pstatic.net/MjAyMjA3MTJfMyAg/MDAxNjU3NTY4MjY1MDkx.JFerCgKcRknpznKO95vBeE9ziRIErkJV70VaXlSdsI8g.hn-bwX7FjApPsXbLm4I_E_6CmxIofFfS4I8HBDzvshog.PNG.wjdcogus202/012.png?type=w966',
+  'https://postfiles.pstatic.net/MjAyMjA3MTJfNzUg/MDAxNjU3NTY4MjY1Mjg1.p7SQuMan93xwZj0yRDDiA_KLNrYidnfwNV_ThKstUOgg.mjN-kD5CYjPWjUFnWxF8nSzeaiWaxx3s4GuoO3IW6tIg.PNG.wjdcogus202/013.png?type=w966',
 ];
 
 const {width, height} = Dimensions.get('screen');

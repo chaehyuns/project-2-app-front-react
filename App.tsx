@@ -38,12 +38,12 @@ function App() {
           <Tab.Screen
             name="Delivery"
             component={Delivery}
-            options={{title: '오더 목록'}}
+            options={{headerShown: false}}
           />
           <Tab.Screen
-            name="Settings"
+            name="도장깨기"
             component={Settings}
-            options={{title: '내 정보'}}
+            options={{headerShown: false}}
           />
         </Tab.Navigator>
       ) : (
